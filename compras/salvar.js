@@ -36,4 +36,4 @@ function salvarLista() {
  }
 
  // Evento do botão
- 
+ btnSalvar.addEventListener('click', salvarLista);
