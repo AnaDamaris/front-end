@@ -22,7 +22,28 @@ function carregarListaDoArquivo(file) {
         carregarListaDoArquivo.innerHTML = '';
 
         // Divide o conteúdo em linhas e adiciona cada uma como <link
-        cont linhas
-    }
+        const linhas = reader.result.split(/\r?\n/).filter(l => l.trim() !== '');
+        linhas.forEach(linha => {
+            const li = document.createElement('li');
+            li.textContent = linha;
+            li.style.padding = '4px 0';
+
+            li.style.borderBottom = '1px solid #ccc'; // linha fina cinza
+
+            lista.appendChild(li);
+        });
+    };
+reader.readAsText(file);
 }
+
+// Eventos
+btnCarregar.addEventListener('click', () => inputArquivo.click());
+inputArquivo.addEventListener('change', () => {
+    const file = inputArquivo.files[0];
+    if (file) {
+        carregarListaDoArquivo(file);
+        inputArquivo.value = ''; // permite reescolher 
+        // o mesmo arquivo depois
+    }
+});
 
