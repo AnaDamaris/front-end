@@ -5,7 +5,7 @@ btnSalvar.style.display = 'block';
 btnSalvar.style.margin = '20px auto';
 btnSalvar.style.padding = '6px 12px';
 btnSalvar.style.cursor = 'pointer';
-Container.appendChild(btnSalvar);
+container.appendChild(btnSalvar);
 
 // Função para salvar a lista em um arquivo .txt
 function salvarLista() {
@@ -37,3 +37,4 @@ function salvarLista() {
 
  // Evento do botão
  btnSalvar.addEventListener('click', salvarLista);
+ 

@@ -16,7 +16,8 @@ container.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)'; //sombra
 const título = document.createElement('h1');
 título.textContent = 'Lista de Compras';
 título.style.textAlign = 'center';
-container.appendChild(título);
+título.style.margin = '10px 0 20px';
+container.appendChild(título)
 
 // Cria input de texto
 const inputItem = document.createElement('input');
@@ -26,27 +27,20 @@ inputItem.style.textAlign = 'center';
 inputItem.style.fontSize = '20px';
 container.appendChild(inputItem);
 
-// Cria botão de adicionar
+// Estilos do containerinputItem.placeholder = 'Digite um item';
+
+
 const btnAdd = document.createElement('button');
 btnAdd.textContent = 'Adicionar';
 btnAdd.style.fontSize = '20px';
 container.appendChild(btnAdd);
 
-// Cria Lista
-const lista = document.createElement('ul');
+// Cria lista
+const lista = document.createElement('h1');
+titulo.textContent = 'lista de compras';
+titulo.style.textAlign = 'center';
+titulo.style.margin = '10px 0 20px';
 container.appendChild(lista);
-
-// Função para adicionar item
-function adicionarItem() {
-    const valor = inputItem.value.trim();
-    if (valor !== '') {
-        const li = document.createElement('li');
-        li.textContent = valor;
-        lista.appendChild(li);
-        inputItem.value ='';
-        inputItem.focus(); // volta o foco para o campo
-    }
-}
 
 // Evento do botão
 btnAdd.addEventListener('click', adicionarItem);
@@ -57,3 +51,4 @@ inputItem.addEventListener('keydown', (event) => {
         adicionarItem();
     }
 });
+
