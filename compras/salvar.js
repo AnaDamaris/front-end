@@ -1,40 +1,58 @@
-// Botão para salvar
+// ===== Botão salvar =====
 const btnSalvar = document.createElement('button');
 btnSalvar.textContent = 'Salvar Lista';
 btnSalvar.style.display = 'block';
-btnSalvar.style.margin = '20px auto';
+btnSalvar.style.margin = '10px auto';
 btnSalvar.style.padding = '6px 12px';
 btnSalvar.style.cursor = 'pointer';
+btnSalvar.style.border = 'none';
+btnSalvar.style.borderRadius = '5px';
+btnSalvar.style.backgroundColor = '#FF9800';
+btnSalvar.style.color = '#fff';
+btnSalvar.style.fontWeight = 'bold';
+btnSalvar.style.transition = 'background-color 0.3s';
 container.appendChild(btnSalvar);
 
-// Função para salvar a lista em um arquivo .txt
-function salvarLista() {
-    // Pega todos os <li> e monta o texto (cada item em uma linha)
-    const itens = Array.from(lista.querySelectorAll('li'))
-                       .map(li => li.textContent)
-                       .join('\n');
+// Hover bonito
+btnSalvar.addEventListener('mouseover', () => {
+  btnSalvar.style.backgroundColor = '#F57C00';
+});
+btnSalvar.addEventListener('mouseout', () => {
+  btnSalvar.style.backgroundColor = '#FF9800';
+});
 
- if (!itens) {
+// ===== Função salvar e limpar lista =====
+function salvarLista() {
+  const itens = Array.from(lista.querySelectorAll('li')).map(li => {
+    const span = li.querySelector('span');
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    const texto = span ? span.textContent.trim() : '';
+    const comprado = checkbox ? checkbox.checked : false;
+    // indica se foi comprado
+    return comprado ? `${texto} [X]` : texto;
+  }).filter(l => l !== '').join('\n');
+
+  if (!itens) {
     alert('A lista está vazia!');
     return;
- }
+  }
 
- // Cria um Blob com o conteúdo de texto
- const blob = new Blob([itens], { type: 'text/plain' });
- const url = URL.createObjectURL(blob);
+  const blob = new Blob([itens], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
 
- // Cria um link temporário para download
- const a = document.createElement('a');
- a.href = url;
- a.download = 'Lista.txt'; // nome do arquivo
- document.body.appendChild(a);
- a.click(); // dispara o download
- document.body.removeChild(a);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'lista.txt';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 
- // Libera o objeto URL
- URL.revokeObjectURL(url);
- }
+  // Limpa a lista e storage
+  lista.innerHTML = '';
+  localStorage.removeItem('listaCompras');
+}
 
- // Evento do botão
- btnSalvar.addEventListener('click', salvarLista);
+btnSalvar.addEventListener('click', salvarLista);
+
  
