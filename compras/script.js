@@ -3,7 +3,7 @@ const container = document.createElement('div');
 container.id = 'lista-container';
 document.body.appendChild(container);
 
-container.style.backgroundColor = '#f9f9';
+container.style.backgroundColor = '#f9f';
 container.style.border = '2px solid #ccc';
 container.style.borderRadius = '10px';
 container.style.padding = '20px';
