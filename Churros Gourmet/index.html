@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churros Gourmet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Churros Gourmet</h1>
+        <nav>
+            <a href="#sabores">Sabores</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h2>Os melhores churros gourmet da cidade!</h2>
+        <button onclick="rolarParaSabores()">Ver Sabores</button>
+    </section>
+
+    <section id="sabores" class="sabores">
+        <h2>Nossos Sabores</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="imagens/churros1.jpg" alt="Churros doce de leite">
+                <h3>Doce de Leite</h3>
+                <p>Clássico e irresistível, com recheio cremoso.</p>
+            </div>
+            <div class="card">
+                <img src="/imagens/churros2.jpg" alt="Churros chocolate">
+                <h3>Chocolate</h3>
+                <p>Recheado com chocolate belga derretido.</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imgur.com/u8bb1xZ.jpg" alt="Churros ninho">
+                <h3>Nutella com Ninho</h3>
+                <p>A combinação perfeita para os fãs de creme e chocolate.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos apaixonados por churros e criamos receitas exclusivas com ingredientes selecionados para proporcionar a melhor experiência gourmet.</p>
+    </section>
+
+    <section id="contato" class="contato">
+        <h2>Contato</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" id="nome" placeholder="Seu nome" required>
+            <input type="email" id="email" placeholder="Seu e-mail" required>
+            <textarea id="mensagem" placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <p id="status"></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Churros Gourmet - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
